@@ -1,10 +1,6 @@
 FROM debian:sid-slim
 LABEL maintainer "Peter McConnell <me@petermcconnell.com>"
 
-# RUN echo "deb https://download.videolan.org/debian/stable stable main" >> /etc/apt/sources.list && \
-#     echo "deb-src https://download.videolan.org/debian/stable stable main" >> /etc/apt/sources.list
-#
-
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
     apt-get install -y \
       ca-certificates \
@@ -19,13 +15,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
       mplayer \
       mpv \
       --no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/*
-RUN pip3 install mps-youtube youtube-dl
+    && rm -rf /var/lib/apt/lists/* && \
+    pip3 install mps-youtube youtube-dl
 
 ENV HOME /home/pulseaudio
 RUN useradd --create-home --home-dir $HOME pulseaudio \
-	&& usermod -aG audio,pulse,pulse-access pulseaudio \
-	&& chown -R pulseaudio:pulseaudio $HOME
+    && usermod -aG audio,pulse,pulse-access pulseaudio \
+    && chown -R pulseaudio:pulseaudio $HOME
 
 WORKDIR $HOME
 
