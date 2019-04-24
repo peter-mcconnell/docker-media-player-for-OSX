@@ -27,7 +27,7 @@ docker run --rm \
 Optional
 --------
 
-Add this to your `.bashrc` or other dotfiles and gain a `player` command:
+Add this to your `.bashrc` or other dotfiles and gain a `d_player` command:
 
 ```bash
 d_player() {
