@@ -4,6 +4,8 @@ docker-media-player (mpsyt + pulseaudio)
 mpyst and pulseaudio in docker. Made so that I can run my audio from a container
 and therefore from my terminal, on OSX.
 
+![demo](./media/demo.gif)
+
 Steps
 -----
 
