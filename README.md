@@ -39,3 +39,11 @@ d_player() {
   pemcconnell/mpsyt:0.1 "$@"
 }
 ```
+
+Shout-outs
+----------
+
+This is very much a combination of existing work by others:
+
+ - https://github.com/jessfraz/dockerfiles/tree/master/pulseaudio
+ - https://github.com/mps-youtube/mps-youtube
