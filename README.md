@@ -35,6 +35,8 @@ Add this to your `.bashrc` or other dotfiles and gain a `d_player` command:
 d_player() {
   docker run --rm \
   -e PULSE_SERVER=docker.for.mac.localhost \
+  -e http_proxy=$HTTP_PROXY \
+  -e https_proxy=$HTTPS_PROXY \
   -v ~/.config/pulse:/home/pulseaudio/.config/pulse \
   -it \
   --name player \
@@ -49,3 +51,23 @@ This is very much a combination of existing work by others:
 
  - https://github.com/jessfraz/dockerfiles/tree/master/pulseaudio
  - https://github.com/mps-youtube/mps-youtube
+
+Alternatives
+------------
+
+https://github.com/tizonia/docker-tizonia/ is a very solid alternative.
+Similarly you can add a convenience function in bash with:
+
+```bash
+d_player() {
+  docker run --rm \
+    -e PULSE_SERVER=docker.for.mac.localhost \
+    -e http_proxy=$HTTP_PROXY \
+    -e https_proxy=$HTTPS_PROXY \
+    -v ~/.config/pulse:/home/tizonia/.config/pulse \
+    -v ~/.config/tizonia:/home/tizonia/.config/tizonia \
+    -ti \
+    --name tizonia \
+    pemcconnell/tizonia:latest "$@"
+}
+```
